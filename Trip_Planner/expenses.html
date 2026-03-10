@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses - AstraTrip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">🚀 AstraTrip</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+                <li><a href="planner.html" class="nav-link">Trip Planner</a></li>
+                <li><a href="itinerary.html" class="nav-link">My Itinerary</a></li>
+                <li><a href="packing.html" class="nav-link">Packing List</a></li>
+                <li><a href="expenses.html" class="nav-link active">Expenses</a></li>
+                <li><a href="group-travel.html" class="nav-link">Group Travel</a></li>
+                <li><a href="gamification.html" class="nav-link">🎮 Gamification</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Expense Tracker</h1>
+            <p class="page-subtitle">Manage your travel budget and expenses</p>
+        </div>
+
+        <!-- Trip Selection -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Select Trip</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="trip-selector" class="form-label">Choose a Trip</label>
+                        <select id="trip-selector" class="form-control">
+                            <option value="">Select a trip...</option>
+                            <!-- Trips will be loaded from saved data -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="currency" class="form-label">Currency</label>
+                        <select id="currency" class="form-control">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="GBP">GBP (£)</option>
+                            <option value="JPY">JPY (¥)</option>
+                            <option value="CAD">CAD (C$)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget Overview -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Budget Overview</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-4">
+                    <div class="text-center">
+                        <h3 class="mb-1">Total Budget</h3>
+                        <div id="total-budget" class="total-expense">$0</div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="mb-1">Total Spent</h3>
+                        <div id="total-spent" class="total-expense" style="background: var(--gradient-accent);">$0</div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="mb-1">Remaining</h3>
+                        <div id="remaining-budget" class="total-expense" style="background: var(--gradient-success);">$0</div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="mb-1">Daily Average</h3>
+                        <div id="daily-average" class="total-expense" style="background: var(--gradient-primary);">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expense Categories -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Expense Categories</h2>
+            </div>
+            <div class="card-body">
+                <div class="expense-grid">
+                    <div class="form-group">
+                        <label for="accommodation" class="form-label">Accommodation</label>
+                        <input type="number" id="accommodation" class="form-control" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="transportation" class="form-label">Transportation</label>
+                        <input type="number" id="transportation" class="form-control" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="food" class="form-label">Food & Dining</label>
+                        <input type="number" id="food" class="form-control" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="activities" class="form-label">Activities & Entertainment</label>
+                        <input type="number" id="activities" class="form-control" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="shopping" class="form-label">Shopping</label>
+                        <input type="number" id="shopping" class="form-control" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="miscellaneous" class="form-label">Miscellaneous</label>
+                        <input type="number" id="miscellaneous" class="form-control" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Expenses -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Custom Expenses</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="custom-expense-name" class="form-label">Expense Name</label>
+                        <input type="text" id="custom-expense-name" class="form-control" placeholder="e.g., Travel Insurance, Visa Fees...">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-expense-amount" class="form-label">Amount</label>
+                        <input type="number" id="custom-expense-amount" class="form-control" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button id="add-custom-expense" class="btn btn-primary">Add Custom Expense</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expense List -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Expense Breakdown</h2>
+            </div>
+            <div class="card-body">
+                <div id="expense-list">
+                    <!-- Expenses will be listed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget Planning -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Budget Planning</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="budget-goal" class="form-label">Budget Goal</label>
+                        <input type="number" id="budget-goal" class="form-control" placeholder="Set your budget goal...">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-alert" class="form-label">Budget Alert Threshold (%)</label>
+                        <input type="number" id="budget-alert" class="form-control" placeholder="80" min="0" max="100">
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button id="set-budget-goal" class="btn btn-success">Set Budget Goal</button>
+                    <button id="reset-budget" class="btn btn-outline">Reset Budget</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export & Actions -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Export & Actions</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-3">
+                    <button id="export-expenses" class="btn btn-secondary">📄 Export to CSV</button>
+                    <button id="print-expenses" class="btn btn-outline">🖨️ Print Report</button>
+                    <button id="share-expenses" class="btn btn-primary">📤 Share Report</button>
+                </div>
+                <div class="grid grid-3 mt-3">
+                    <button id="save-expenses" class="btn btn-success">💾 Save to Browser</button>
+                    <button id="clear-expenses" class="btn btn-danger">🗑️ Clear All</button>
+                    <button id="import-expenses" class="btn btn-outline">📥 Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="cities-data.js"></script>
+    <script src="gamification.js"></script>
+    <script src="expenses.js"></script>
+    <script src="enhancements.js"></script>
+</body>
+</html>

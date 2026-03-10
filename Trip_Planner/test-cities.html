@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cities Data</title>
+</head>
+<body>
+    <h1>Test Cities Data Loading</h1>
+    <select id="destination">
+        <option value="">Loading...</option>
+    </select>
+    
+    <div id="debug"></div>
+    
+    <script src="cities-data.js"></script>
+    <script>
+        console.log('Test script loaded');
+        console.log('citiesData available:', typeof citiesData !== 'undefined');
+        
+        if (typeof citiesData !== 'undefined') {
+            console.log('Cities found:', Object.keys(citiesData));
+            
+            const select = document.getElementById('destination');
+            select.innerHTML = '<option value="">Select destination...</option>';
+            
+            Object.entries(citiesData).forEach(([key, city]) => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = city.name;
+                select.appendChild(option);
+            });
+            
+            document.getElementById('debug').innerHTML = `
+                <p>✅ Cities loaded successfully!</p>
+                <p>Total cities: ${Object.keys(citiesData).length}</p>
+                <p>First city: ${Object.values(citiesData)[0].name}</p>
+            `;
+        } else {
+            document.getElementById('debug').innerHTML = `
+                <p>❌ citiesData not found!</p>
+                <p>Window object keys: ${Object.keys(window).filter(key => key.includes('cities')).join(', ')}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

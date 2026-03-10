@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstraTrip - Professional Travel Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">🚀 AstraTrip</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+                <li><a href="planner.html" class="nav-link">Trip Planner</a></li>
+                <li><a href="itinerary.html" class="nav-link">My Itinerary</a></li>
+                <li><a href="packing.html" class="nav-link">Packing List</a></li>
+                <li><a href="expenses.html" class="nav-link">Expenses</a></li>
+                <li><a href="group-travel.html" class="nav-link">Group Travel</a></li>
+                <li><a href="gamification.html" class="nav-link">🎮 Gamification</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Welcome to AstraTrip</h1>
+            <p class="page-subtitle">Your professional travel planning companion</p>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Plan Your Next Adventure</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-3">AstraTrip helps you create comprehensive travel plans with intelligent recommendations, detailed itineraries, and professional tools to make your journey seamless and memorable.</p>
+                <div class="d-flex justify-center">
+                    <a href="planner.html" class="btn btn-primary">Start Planning</a>
+                    <a href="destinations.html" class="btn btn-outline ml-2">Explore Destinations</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-3 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-2">🗺️</div>
+                    <h3 class="card-title">Smart Planning</h3>
+                    <p>AI-powered recommendations based on your preferences and destination</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-2">📅</div>
+                    <h3 class="card-title">Detailed Itineraries</h3>
+                    <p>Day-by-day planning with time slots and activity suggestions</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-2">💰</div>
+                    <h3 class="card-title">Budget Management</h3>
+                    <p>Track expenses and manage your travel budget effectively</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Quick Actions</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div>
+                        <h4 class="mb-2">Create New Trip</h4>
+                        <p class="mb-3">Start planning a new adventure with our comprehensive trip planner</p>
+                        <a href="planner.html" class="btn btn-primary">New Trip</a>
+                    </div>
+                    <div>
+                        <h4 class="mb-2">View Destinations</h4>
+                        <p class="mb-3">Explore our curated list of destinations with detailed information</p>
+                        <a href="destinations.html" class="btn btn-outline">Browse Destinations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Destinations Preview -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2 class="card-title">Popular Destinations</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-4" id="popular-destinations">
+                    <!-- Destinations will be loaded here -->
+                </div>
+                <div class="text-center mt-3">
+                    <a href="destinations.html" class="btn btn-outline">View All Destinations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="cities-data.js"></script>
+    <script src="gamification.js"></script>
+    <script src="script.js"></script>
+    <script src="enhancements.js"></script>
+</body>
+</html>

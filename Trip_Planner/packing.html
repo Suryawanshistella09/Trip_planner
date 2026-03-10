@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packing List - AstraTrip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">🚀 AstraTrip</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="destinations.html" class="nav-link">Destinations</li>
+                <li><a href="planner.html" class="nav-link">Trip Planner</a></li>
+                <li><a href="itinerary.html" class="nav-link">My Itinerary</a></li>
+                <li><a href="packing.html" class="nav-link active">Packing List</a></li>
+                <li><a href="expenses.html" class="nav-link">Expenses</a></li>
+                <li><a href="group-travel.html" class="nav-link">Group Travel</a></li>
+                <li><a href="gamification.html" class="nav-link">🎮 Gamification</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Packing List</h1>
+            <p class="page-subtitle">Organize your travel essentials</p>
+        </div>
+
+        <!-- Trip Selection -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Select Trip</h2>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="trip-selector" class="form-label">Choose a Trip</label>
+                        <select id="trip-selector" class="form-control">
+                            <option value="">Select a trip...</option>
+                            <!-- Trips will be loaded from saved data -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="travel-style" class="form-label">Travel Style</label>
+                        <select id="travel-style" class="form-control">
+                            <option value="">Select travel style...</option>
+                            <option value="adventure">🏔️ Adventure</option>
+                            <option value="foodie">🍜 Foodie</option>
+                            <option value="relaxation">🏖️ Relaxation</option>
+                            <option value="culture">🏛️ Culture</option>
+                            <option value="shopping">🛍️ Shopping</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button id="generate-packing-list" class="btn btn-primary">Generate Packing List</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Packing Categories -->
+        <div class="grid grid-2 mb-4">
+            <!-- Essential Items -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">🎒 Essential Items</h3>
+                </div>
+                <div class="card-body">
+                    <div id="essential-items" class="packing-list">
+                        <!-- Essential items will be loaded here -->
+                    </div>
+                    <div class="packing-controls">
+                        <input type="text" id="add-essential" class="form-control" placeholder="Add essential item...">
+                        <button id="add-essential-btn" class="btn btn-outline">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clothing -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">👕 Clothing</h3>
+                </div>
+                <div class="card-body">
+                    <div id="clothing-items" class="packing-list">
+                        <!-- Clothing items will be loaded here -->
+                    </div>
+                    <div class="packing-controls">
+                        <input type="text" id="add-clothing" class="form-control" placeholder="Add clothing item...">
+                        <button id="add-clothing-btn" class="btn btn-outline">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-2 mb-4">
+            <!-- Electronics -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">📱 Electronics</h3>
+                </div>
+                <div class="card-body">
+                    <div id="electronics-items" class="packing-list">
+                        <!-- Electronics items will be loaded here -->
+                    </div>
+                    <div class="packing-controls">
+                        <input type="text" id="add-electronics" class="form-control" placeholder="Add electronics item...">
+                        <button id="add-electronics-btn" class="btn btn-outline">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toiletries -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">🧴 Toiletries</h3>
+                </div>
+                <div class="card-body">
+                    <div id="toiletries-items" class="packing-list">
+                        <!-- Toiletries items will be loaded here -->
+                    </div>
+                    <div class="packing-controls">
+                        <input type="text" id="add-toiletries" class="form-control" placeholder="Add toiletry item...">
+                        <button id="add-toiletries-btn" class="btn btn-outline">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Category -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">➕ Custom Category</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="custom-category" class="form-label">Category Name</label>
+                        <input type="text" id="custom-category" class="form-control" placeholder="e.g., Documents, Snacks...">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-item" class="form-label">Item</label>
+                        <input type="text" id="custom-item" class="form-control" placeholder="Add item to custom category...">
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button id="add-custom-category" class="btn btn-outline">Create Category</button>
+                    <button id="add-custom-item" class="btn btn-primary">Add Item</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Packing Actions -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Packing Actions</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-3">
+                    <button id="check-all" class="btn btn-success">✅ Check All</button>
+                    <button id="uncheck-all" class="btn btn-outline">❌ Uncheck All</button>
+                    <button id="clear-list" class="btn btn-danger">🗑️ Clear List</button>
+                </div>
+                <div class="grid grid-3 mt-3">
+                    <button id="export-packing" class="btn btn-secondary">📄 Export List</button>
+                    <button id="print-packing" class="btn btn-outline">🖨️ Print List</button>
+                    <button id="share-packing" class="btn btn-primary">📤 Share List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="cities-data.js"></script>
+    <script src="gamification.js"></script>
+    <script src="packing.js"></script>
+    <script src="enhancements.js"></script>
+</body>
+</html>

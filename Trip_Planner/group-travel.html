@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Travel Mode - AstraTrip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">AstraTrip</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+                <li><a href="planner.html" class="nav-link">Plan Trip</a></li>
+                <li><a href="itinerary.html" class="nav-link">Itinerary</a></li>
+                <li><a href="packing.html" class="nav-link">Packing</a></li>
+                <li><a href="expenses.html" class="nav-link">Expenses</a></li>
+                <li><a href="group-travel.html" class="nav-link active">Group Travel</a></li>
+                <li><a href="gamification.html" class="nav-link">🎮 Gamification</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <div class="page-header">
+            <h1 class="page-title">👥 Group Travel Mode</h1>
+            <p class="page-subtitle">Plan your perfect group adventure with friends. Vote on destinations and activities to create the ultimate shared experience.</p>
+        </div>
+
+        <!-- Group Travel Dashboard -->
+        <div class="group-travel-dashboard">
+            <!-- Friends List Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">👥 Your Travel Group</h2>
+                </div>
+                <div class="card-body">
+                    <div id="friends-list">
+                        <!-- Friends list will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Recommendations Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">⭐ Group Recommendations</h2>
+                </div>
+                <div class="card-body">
+                    <div id="group-recommendations">
+                        <!-- Recommendations will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voting Interface Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">🗳️ Vote on Spots</h2>
+                </div>
+                <div class="card-body">
+                    <div id="voting-interface">
+                        <!-- Voting interface will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Stats Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">📊 Group Statistics</h2>
+                </div>
+                <div class="card-body">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-info">
+                                <h3 id="total-friends">0</h3>
+                                <p>Group Members</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🗳️</div>
+                            <div class="stat-info">
+                                <h3 id="total-votes">0</h3>
+                                <p>Total Votes</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-info">
+                                <h3 id="top-spots">0</h3>
+                                <p>Top Rated Spots</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-info">
+                                <h3 id="consensus-rate">0%</h3>
+                                <p>Group Consensus</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">⚡ Quick Actions</h2>
+                </div>
+                <div class="card-body">
+                    <div class="quick-actions-grid">
+                        <button class="btn btn-primary" onclick="groupTravel.showAddFriendModal()">
+                            <i class="fas fa-user-plus"></i>
+                            Add New Friend
+                        </button>
+                        <button class="btn btn-secondary" onclick="groupTravel.exportGroupData()">
+                            <i class="fas fa-download"></i>
+                            Export Group Data
+                        </button>
+                        <button class="btn btn-outline" onclick="groupTravel.clearAllVotes()">
+                            <i class="fas fa-refresh"></i>
+                            Reset All Votes
+                        </button>
+                        <button class="btn btn-success" onclick="groupTravel.generateGroupItinerary()">
+                            <i class="fas fa-route"></i>
+                            Generate Group Itinerary
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>AstraTrip</h3>
+                <p>Your ultimate travel planning companion</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="planner.html">Plan Trip</a>
+                <a href="group-travel.html">Group Travel</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="cities-data.js"></script>
+    <script src="gamification.js"></script>
+    <script src="group-travel.js"></script>
+    <script src="enhancements.js"></script>
+    
+    <script>
+        // Update statistics when group travel is initialized
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.groupTravel) {
+                    updateGroupStats();
+                }
+            }, 1000);
+        });
+
+        function updateGroupStats() {
+            const friends = groupTravel.friends.length;
+            const votes = Object.values(groupTravel.votes).reduce((total, spotVotes) => {
+                return total + Object.keys(spotVotes).length;
+            }, 0);
+            
+            const recommendations = groupTravel.getAllSpots().filter(spot => {
+                const spotVotes = groupTravel.getSpotVotes(spot.id);
+                return spotVotes.total > 0 && groupTravel.getSpotRecommendationScore(spot.id) > 0.5;
+            }).length;
+
+            const consensusRate = friends > 0 ? Math.round((votes / (friends * 10)) * 100) : 0;
+
+            document.getElementById('total-friends').textContent = friends;
+            document.getElementById('total-votes').textContent = votes;
+            document.getElementById('top-spots').textContent = recommendations;
+            document.getElementById('consensus-rate').textContent = consensusRate + '%';
+        }
+
+        // Add these methods to the groupTravel object
+        window.groupTravel = window.groupTravel || {};
+        
+        window.groupTravel.exportGroupData = function() {
+            const data = {
+                friends: this.friends,
+                votes: this.votes,
+                currentGroup: this.currentGroup,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'group-travel-data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            this.showNotification('Group data exported successfully!', 'success');
+        };
+
+        window.groupTravel.clearAllVotes = function() {
+            if (confirm('Are you sure you want to clear all votes? This action cannot be undone.')) {
+                this.votes = {};
+                this.saveVotes();
+                this.updateRecommendations();
+                this.renderVotingInterface();
+                updateGroupStats();
+                this.showNotification('All votes cleared successfully!', 'info');
+            }
+        };
+
+        window.groupTravel.generateGroupItinerary = function() {
+            const recommendations = this.getAllSpots().map(spot => ({
+                ...spot,
+                score: this.getSpotRecommendationScore(spot.id),
+                votes: this.getSpotVotes(spot.id)
+            })).filter(spot => spot.votes.total > 0)
+              .sort((a, b) => b.score - a.score)
+              .slice(0, 10);
+
+            if (recommendations.length === 0) {
+                this.showNotification('No voted spots found. Add some votes first!', 'warning');
+                return;
+            }
+
+            // Save to localStorage for itinerary page
+            localStorage.setItem('groupItinerary', JSON.stringify({
+                spots: recommendations,
+                groupMembers: this.friends.map(f => f.name),
+                generatedAt: new Date().toISOString()
+            }));
+
+            this.showNotification('Group itinerary generated! Check the Itinerary page.', 'success');
+            
+            // Redirect to itinerary page after a short delay
+            setTimeout(() => {
+                window.location.href = 'itinerary.html?source=group';
+            }, 1500);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Itinerary - AstraTrip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">🚀 AstraTrip</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+                <li><a href="planner.html" class="nav-link">Trip Planner</a></li>
+                <li><a href="itinerary.html" class="nav-link active">My Itinerary</a></li>
+                <li><a href="packing.html" class="nav-link">Packing List</a></li>
+                <li><a href="expenses.html" class="nav-link">Expenses</a></li>
+                <li><a href="group-travel.html" class="nav-link">Group Travel</a></li>
+                <li><a href="gamification.html" class="nav-link">🎮 Gamification</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">My Itinerary</h1>
+            <p class="page-subtitle">Manage and view your travel plans</p>
+        </div>
+
+        <!-- Saved Trips -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Saved Trips</h2>
+            </div>
+            <div class="card-body">
+                <div id="saved-trips">
+                    <!-- Saved trips will be loaded here -->
+                </div>
+                <div id="no-trips" class="text-center p-4">
+                    <p class="mb-3">No saved trips yet. Start planning your adventure!</p>
+                    <a href="planner.html" class="btn btn-primary">Create New Trip</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Itinerary -->
+        <div id="current-itinerary" class="d-none">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">Current Itinerary</h2>
+                </div>
+                <div class="card-body">
+                    <div id="itinerary-details">
+                        <!-- Current itinerary details -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day-by-Day Itinerary -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Daily Schedule</h2>
+                </div>
+                <div class="card-body">
+                    <div id="daily-itinerary">
+                        <!-- Daily schedule will be displayed here -->
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button id="edit-schedule" class="btn btn-outline">✏️ Edit Schedule</button>
+                    <button id="add-activities" class="btn btn-primary">➕ Add Activities</button>
+                    <button id="export-schedule" class="btn btn-secondary">📄 Export</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Activity Modal -->
+        <div id="activity-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: flex; align-items: center; justify-content: center;">
+            <div class="card" style="max-width: 600px;">
+                <div class="card-header">
+                    <h2 class="card-title">Add New Activity</h2>
+                </div>
+                <div class="card-body">
+                    <form id="activity-form">
+                        <div class="form-group">
+                            <label for="activity-name" class="form-label">Activity Name</label>
+                            <input type="text" id="activity-name" class="form-control" required>
+                        </div>
+                        <div class="grid grid-2">
+                            <div class="form-group">
+                                <label for="activity-day" class="form-label">Day</label>
+                                <select id="activity-day" class="form-control" required>
+                                    <!-- Days will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="activity-time" class="form-label">Time Slot</label>
+                                <select id="activity-time" class="form-control" required>
+                                    <option value="morning">🌅 Morning</option>
+                                    <option value="afternoon">☀️ Afternoon</option>
+                                    <option value="evening">🌙 Evening</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="activity-notes" class="form-label">Notes</label>
+                            <textarea id="activity-notes" class="form-control" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button id="cancel-activity" class="btn btn-secondary">Cancel</button>
+                    <button id="save-activity" class="btn btn-primary">Add Activity</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="cities-data.js"></script>
+    <script src="gamification.js"></script>
+    <script src="itinerary.js"></script>
+    <script src="enhancements.js"></script>
+</body>
+</html>

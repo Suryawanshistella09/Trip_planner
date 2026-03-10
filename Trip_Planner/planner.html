@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner - AstraTrip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">🚀 AstraTrip</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+                <li><a href="planner.html" class="nav-link active">Trip Planner</a></li>
+                <li><a href="itinerary.html" class="nav-link">My Itinerary</a></li>
+                <li><a href="packing.html" class="nav-link">Packing List</a></li>
+                <li><a href="expenses.html" class="nav-link">Expenses</a></li>
+                <li><a href="group-travel.html" class="nav-link">Group Travel</a></li>
+                <li><a href="gamification.html" class="nav-link">🎮 Gamification</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Plan Your Trip</h1>
+            <p class="page-subtitle">Create a comprehensive travel itinerary</p>
+        </div>
+
+        <!-- Trip Setup Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Trip Details</h2>
+            </div>
+            <div class="card-body">
+                <form id="trip-form">
+                    <div class="grid grid-2 mb-3">
+                        <div class="form-group">
+                            <label for="destination" class="form-label">Destination</label>
+                            <select id="destination" class="form-control" required>
+                                <option value="">Select a destination...</option>
+                                <!-- Options will be loaded from cities-data.js -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="trip-name" class="form-label">Trip Name</label>
+                            <input type="text" id="trip-name" class="form-control" placeholder="e.g., Paris Adventure 2024" required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-2 mb-3">
+                        <div class="form-group">
+                            <label for="start-date" class="form-label">Start Date</label>
+                            <input type="date" id="start-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trip-length" class="form-label">Duration (Days)</label>
+                            <input type="number" id="trip-length" class="form-control" min="1" max="30" value="3" required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-2 mb-3">
+                        <div class="form-group">
+                            <label for="preferences" class="form-label">Travel Style</label>
+                            <select id="preferences" class="form-control" required>
+                                <option value="">Select travel style...</option>
+                                <option value="adventure">🏔️ Adventure</option>
+                                <option value="foodie">🍜 Foodie</option>
+                                <option value="relaxation">🏖️ Relaxation</option>
+                                <option value="culture">🏛️ Culture</option>
+                                <option value="shopping">🛍️ Shopping</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget" class="form-label">Budget Range</label>
+                            <select id="budget" class="form-control">
+                                <option value="">Select budget range...</option>
+                                <option value="budget">Budget ($)</option>
+                                <option value="moderate">Moderate ($$)</option>
+                                <option value="luxury">Luxury ($$$)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="trip-notes" class="form-label">Additional Notes</label>
+                        <textarea id="trip-notes" class="form-control" rows="3" placeholder="Any special requirements or preferences..."></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Generate Itinerary</button>
+                        <button type="button" id="surprise-me" class="btn btn-outline ml-2">🎲 Surprise Me!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Generated Itinerary Preview -->
+        <div id="itinerary-preview" class="d-none">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">Your Itinerary Preview</h2>
+                </div>
+                <div class="card-body">
+                    <div id="itinerary-content">
+                        <!-- Itinerary will be generated here -->
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button id="save-itinerary" class="btn btn-success">💾 Save Itinerary</button>
+                    <button id="edit-itinerary" class="btn btn-outline">✏️ Edit Itinerary</button>
+                    <button id="export-itinerary" class="btn btn-secondary">📄 Export</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div id="countdown-section" class="d-none">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">⏰ Trip Countdown</h2>
+                </div>
+                <div class="card-body">
+                    <div class="countdown-container">
+                        <div class="countdown-item">
+                            <span id="days" class="countdown-number">00</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="hours" class="countdown-number">00</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="minutes" class="countdown-number">00</span>
+                            <span class="countdown-label">Minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Information -->
+        <div id="weather-section" class="d-none">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">🌤️ Weather Information</h2>
+                </div>
+                <div class="card-body">
+                    <div id="weather-content">
+                        <!-- Weather info will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="cities-data.js"></script>
+    <script src="gamification.js"></script>
+    <script src="planner.js"></script>
+    <script src="enhancements.js"></script>
+</body>
+</html>

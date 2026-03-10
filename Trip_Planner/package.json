@@ -1,0 +1,77 @@
+{
+  "name": "astratrip",
+  "version": "1.0.0",
+  "description": "A futuristic travel itinerary planner with AI-like features, interactive maps, and stunning glassmorphism UI",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "build": "echo 'No build step required - static files only'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linting configured'"
+  },
+  "keywords": [
+    "travel",
+    "itinerary",
+    "planner",
+    "trip",
+    "vacation",
+    "glassmorphism",
+    "futuristic",
+    "ui",
+    "threejs",
+    "javascript",
+    "css",
+    "html"
+  ],
+  "author": "AstraTrip Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/astratrip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/astratrip/issues"
+  },
+  "homepage": "https://github.com/yourusername/astratrip#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "features": [
+    "Smart Itinerary Generation",
+    "Interactive Maps",
+    "AI-like Recommendations",
+    "Drag & Drop Planning",
+    "Packing Lists",
+    "Expense Calculator",
+    "Weather Preview",
+    "Three.js Animations",
+    "Glassmorphism UI",
+    "Responsive Design",
+    "Offline Support",
+    "Local Storage",
+    "Export Functionality"
+  ],
+  "supported-destinations": [
+    "Paris, France",
+    "Tokyo, Japan",
+    "New York City, USA",
+    "Bali, Indonesia",
+    "Santorini, Greece"
+  ],
+  "travel-styles": [
+    "adventure",
+    "foodie",
+    "relaxation",
+    "culture",
+    "shopping"
+  ]
+}
