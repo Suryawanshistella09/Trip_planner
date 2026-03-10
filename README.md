@@ -1,4 +1,4 @@
-🌍 Trip Planner Web Application
+**Trip Planner Web Application**
 
 A simple and interactive Trip Planner Web App that helps users organize their travel plans efficiently.
 Users can manage destinations, plan itineraries, track expenses, and prepare packing lists for their trips.
